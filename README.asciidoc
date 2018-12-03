@@ -1,0 +1,21 @@
+The content of this repository was used to test the `inotify-instances` textfile collector.  The `inotify-instances` textfile collector was submitted for upstream consideration in the https://github.com/prometheus/node_exporter[Prometheus node_exporter] distribution.
+
+
+== Usage
+
+Build test container:
+
+----
+docker build --force-rm -t inotify-tester .
+----
+
+Run test container:
+
+----
+docker run --rm \
+  --cap-add SYS_PTRACE \
+  --mount type=bind,src=/path/to/inotify-instances,dst=/inotify-instances \
+  inotify-tester
+----
+
+Replace `/path/to/inotify-instances` with the true path to the textfile exporter.
